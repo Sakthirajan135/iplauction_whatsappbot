@@ -4,7 +4,7 @@ This project is a WhatsApp-based chatbot that provides IPL player statistics and
 
 Users can send messages through WhatsApp. The bot converts user queries into SQL, fetches data from a PostgreSQL database, and returns responses using AI.
 
-Features
+Features:
 - IPL player batting and bowling statistics
 - Natural language query handling (Text to SQL)
 - AI-generated responses
@@ -19,26 +19,6 @@ AI Model: Google Gemini
 Vector Database: Qdrant
 Messaging API: Twilio WhatsApp
 
-Project Structure
-ipl-auction-bot/
-app/
-main.py
-config.py
-database.py
-models.py
-services/
-text_to_sql.py
-ai_response.py
-redis_cache.py
-whatsapp/
-handler.py
-scripts/
-init_db.py
-insert_sample_data.py
-setup_qdrant.py
-run.py
-requirements.txt
-README.md
 
 Installation
 python -m venv venv
@@ -68,5 +48,4 @@ python run.py
 Access URL
 http://localhost:8000
 
-License
-MIT
+
