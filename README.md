@@ -12,35 +12,35 @@ Features:
 - WhatsApp integration using Twilio
 
 Technology Stack
-Backend: Python, FastAPI
-Database: PostgreSQL
-Cache: Redis
-AI Model: Google Gemini
-Vector Database: Qdrant
-Messaging API: Twilio WhatsApp
+- Backend: Python, FastAPI
+ - Database: PostgreSQL
+- Cache: Redis
+- Model: Google Gemini
+- Vector Database: Qdrant
+- Messaging API: Twilio WhatsApp
 
 
 Installation
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
+python -m venv venv,
+venv\Scripts\activate,
+pip install -r requirements.txt.
 
 Configuration
 Create a .env file and add:
-TWILIO_ACCOUNT_SID
-TWILIO_AUTH_TOKEN
-TWILIO_WHATSAPP_NUMBER
-DATABASE_URL
-REDIS_URL
-QDRANT_URL
-QDRANT_API_KEY
-GEMINI_API_KEY
-GEMINI_MODEL
+TWILIO_ACCOUNT_SID,
+TWILIO_AUTH_TOKEN,
+TWILIO_WHATSAPP_NUMBER,
+DATABASE_URL,
+REDIS_URL,
+QDRANT_URL,
+QDRANT_API_KEY,
+GEMINI_API_KEY,
+GEMINI_MODEL.
 
 Database Setup
-createdb ipl_auction
-python scripts/init_db.py
-python scripts/insert_sample_data.py
+createdb ipl_auction,
+python scripts/init_db.py,
+python scripts/insert_sample_data.py.
 
 Run Application
 python run.py
