@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     
     # Google Gemini
     GEMINI_API_KEY: str
-    GEMINI_MODEL: str = "GEMINI_MODEL=gemini-1.5-flash-latest"
+    GEMINI_MODEL: str = "GEMINI_MODEL=gemini-1.5-flash"
     
     # App
     WEBHOOK_SECRET: str

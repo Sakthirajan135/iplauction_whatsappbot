@@ -1,4 +1,4 @@
-
+"""AI Response Generation for WhatsApp using Gemini"""
 import google.generativeai as genai
 from typing import Dict, List, Any
 from app.config import get_settings
@@ -40,32 +40,32 @@ class AIResponseGenerator:
             return self._generate_dynamic_response(query, data)
     
     def _format_player_stats(self, player: Dict) -> str:
-        """Format player statistics"""
-        # Use simple formatting without markdown - Twilio doesn't always support it
-        response = f"📊 {player.get('name', 'Unknown')}\n"
-        response += f"🏏 Role: {player.get('role', 'N/A')}\n"
-        response += f"🌍 Country: {player.get('country', 'N/A')}\n\n"
+        """Format player statistics - NO special characters"""
+        # Ultra-simple format - plain text only
+        response = f"{player.get('name', 'Unknown')}\n"
+        response += f"Role: {player.get('role', 'N/A')}\n"
+        response += f"Country: {player.get('country', 'N/A')}\n\n"
         
         # Batting stats
         if 'batting_stats' in player:
             ipl_batting = next((s for s in player['batting_stats'] if s.get('format') == 'IPL'), None)
             if ipl_batting:
                 response += "IPL Batting:\n"
-                response += f"• Matches: {ipl_batting.get('matches', 0)}\n"
-                response += f"• Runs: {ipl_batting.get('runs', 0)}\n"
-                response += f"• Average: {ipl_batting.get('average', 0):.2f}\n"
-                response += f"• Strike Rate: {ipl_batting.get('strike_rate', 0):.2f}\n"
-                response += f"• 50s/100s: {ipl_batting.get('fifties', 0)}/{ipl_batting.get('hundreds', 0)}\n\n"
+                response += f"Matches: {ipl_batting.get('matches', 0)}\n"
+                response += f"Runs: {ipl_batting.get('runs', 0)}\n"
+                response += f"Average: {ipl_batting.get('average', 0):.2f}\n"
+                response += f"Strike Rate: {ipl_batting.get('strike_rate', 0):.2f}\n"
+                response += f"50s/100s: {ipl_batting.get('fifties', 0)}/{ipl_batting.get('hundreds', 0)}\n\n"
         
         # Bowling stats
         if 'bowling_stats' in player:
             ipl_bowling = next((s for s in player['bowling_stats'] if s.get('format') == 'IPL'), None)
             if ipl_bowling and ipl_bowling.get('wickets', 0) > 0:
                 response += "IPL Bowling:\n"
-                response += f"• Wickets: {ipl_bowling.get('wickets', 0)}\n"
-                response += f"• Average: {ipl_bowling.get('average', 0):.2f}\n"
-                response += f"• Economy: {ipl_bowling.get('economy', 0):.2f}\n"
-                response += f"• 5W: {ipl_bowling.get('five_wicket_haul', 0)}\n"
+                response += f"Wickets: {ipl_bowling.get('wickets', 0)}\n"
+                response += f"Average: {ipl_bowling.get('average', 0):.2f}\n"
+                response += f"Economy: {ipl_bowling.get('economy', 0):.2f}\n"
+                response += f"5W: {ipl_bowling.get('five_wicket_haul', 0)}\n"
         
         return response.strip()
     

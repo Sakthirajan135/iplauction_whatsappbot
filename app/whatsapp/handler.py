@@ -1,4 +1,4 @@
-
+"""WhatsApp message handler - orchestrates all services"""
 from typing import Dict, Optional
 import sys
 
@@ -72,7 +72,7 @@ class WhatsAppHandler:
         player_name = self._extract_player_name(message)
         
         if not player_name:
-            return "❌ Please specify a player name.\n\nExample: _Show me Virat Kohli stats_"
+            return "Please specify a player name.\n\nExample: Show me Virat Kohli stats"
         
         # Track search popularity
         redis_cache.increment_search(player_name)
@@ -88,7 +88,7 @@ class WhatsAppHandler:
                 for p in similar:
                     response += f"• {p['name']}\n"
                 return response
-            return f"❌ Player '{player_name}' not found in database."
+            return f"Player '{player_name}' not found in database."
         
         # Format response
         response = ai_response.format_whatsapp_response(
@@ -111,7 +111,7 @@ class WhatsAppHandler:
         player_name = self._extract_player_name(message)
         
         if not player_name:
-            return "❌ Please specify a player name.\n\nExample: _What's Virat Kohli's auction value?_"
+            return "❌ Please specify a player name.\n\nExample: What's Virat Kohli's auction value?"
         
         # Find player
         player = self._find_player_by_name(player_name)
@@ -254,7 +254,7 @@ class WhatsAppHandler:
                     response_type='similar_players'
                 )
         
-        return "❌ Sorry, I couldn't understand that query. Try:\n\n• _Show me Virat Kohli stats_\n• _What's Rohit Sharma's auction value?_\n• _Top 5 batsmen by IPL runs_"
+        return "Sorry, I couldn't understand that query. Try:\n\nShow me Virat Kohli stats\nWhat's Rohit Sharma's auction value?\nTop 5 batsmen by IPL runs"
     
     def _extract_player_name(self, message: str) -> Optional[str]:
         """Extract player name from message"""
